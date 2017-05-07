@@ -1,4 +1,4 @@
-<h2><b>0 config / laravel </b> : very minimum config required repo for fast development.</h2>
+<h2><b>0 config / laravel-ps-ex </b> : very minimum config required repo for fast development.</h2>
 <p> One can start generating CRUD operations in minutes... simple folow below steps:</p>
 
 - Create number of fields required

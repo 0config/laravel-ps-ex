@@ -1,5 +1,5 @@
-<h2><b>0config / laravel-ps-ex </b> : very minimum config required repo for fast development.</h2>
-<p> One can start generating CRUD operations in minutes... simple folow below steps:</p>
+<h2><b>0config / laravel-ps-ex </b> : very minimum config required Laravel 5.4 repo for fast CRUD generation and development.</h2>
+<p> One can start generating CRUD operations in minutes... simply folow below steps:</p>
 
 - Create number of fields required
 - Select type of field and follow prompts

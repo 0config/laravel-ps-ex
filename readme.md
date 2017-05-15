@@ -15,6 +15,10 @@ You will have Complete CRUD in less than 2 minutes with:
 
 
 
+## Work in Progress:
+User list and Admin : Pending
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 

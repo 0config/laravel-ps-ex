@@ -24,3 +24,10 @@ Route::get('/template', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// below this is for user admin
+
+Route::get('/ps_admin/users', function () {
+    $users = \App\User::all();
+    return view('ps_admin/users', compact('users'));
+});

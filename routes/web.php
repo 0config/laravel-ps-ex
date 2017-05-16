@@ -30,6 +30,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/ps_admin/users',
     ['middleware' => 'ps_admin', function () {
         $users = \App\User::orderBy('id', 'desc')->paginate(3);// change your number here
+        echo Request::path(); // integration pending...
         return view('ps_admin/users', compact('users'));
     }]
 );
+

@@ -9,8 +9,9 @@
 
 
             <div class="col-md-5 col-lg-5">
-                 is_admin = {{ $user->is_admin }} |
-                 is_verified = {{ $user->is_verified }} |
+                   <img src="/images/ico/admin-{{ $user->is_admin }}.png"  >
+                   <img src="/images/ico/verified-{{ $user->is_verified }}.png"  >
+
                 <a href="/{{Request::path()}}/{{ $user->id }}/edit/" class=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> &nbsp;
 
                 <a href="/{{Request::path()}}/{{ $user->id }}/"  ><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a> &nbsp;
@@ -21,6 +22,9 @@
 
 
         @endforeach
+
+            <div class="text-center"><br>{{ $users->links() }}</div>
+
     </div>
     __________
     <hr>

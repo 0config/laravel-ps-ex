@@ -27,7 +27,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // below this is for user admin
 
-Route::get('/ps_admin/users', function () {
-    $users = \App\User::orderBy('id', 'desc')->paginate(3);// change your number here
-    return view('ps_admin/users', compact('users'));
-});
+Route::get('/ps_admin/users',
+    ['middleware' => 'ps_admin', function () {
+        $users = \App\User::orderBy('id', 'desc')->paginate(3);// change your number here
+        return view('ps_admin/users', compact('users'));
+    }]
+);

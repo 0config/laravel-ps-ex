@@ -18,13 +18,13 @@ class Ps_aclsController extends Controller
     }
 
     public function master_list()
-    {
-        $ps_acls = Ps_acl::orderBy('id', 'desc')->paginate(3);// change your number here
-        $ps_acls = $ps_acls->appends(Input::except('page'));
-        return view('ps_acl/ps_acl_list', compact('ps_acls'));
-    }
+{
+    $ps_acls = Ps_acl::orderBy('id', 'desc')->paginate(3);// change your number here
+    $ps_acls = $ps_acls->appends(Input::except('page'));
+    return view('ps_acl/ps_acl_list', compact('ps_acls'));
+}
 
-    public function detail(Ps_acl $ps_acl, $id) // for edit get
+    public function detail(Ps_acl $ps_acl, $id)
     {
         $ps_acl = Ps_acl::find($id);
         return view('ps_acl/ps_acl_detail', compact('ps_acl'));
@@ -61,9 +61,9 @@ class Ps_aclsController extends Controller
             $ps_acl_update->del_stat = request('del_stat');
             $ps_acl_update->save();
         } catch (\Exception $e) {
-            echo $e->getCode();   // err code
-            //echo $e->getMessage();   // err message
-            var_dump($e); // full err array
+            echo 'Error Code: '. $e->getCode() . '<BR>';   // err code
+            echo $e->getMessage();   // err message
+//            var_dump($e); // full err array
             exit;
         }
 

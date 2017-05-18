@@ -10,11 +10,11 @@
 
 
             <div class="col-md-4 col-lg-4">
-                <a href="/{{Request::path()}}/{{ $ps_group->id }}/edit/" class=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> &nbsp;
+                <a href="/{{Request::path()}}/edit/{{ $ps_group->id }}/" class=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> &nbsp;
 
-                <a href="/{{Request::path()}}/{{ $ps_group->id }}/"  ><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a> &nbsp;
+                <a href="/{{Request::path()}}/detail/{{ $ps_group->id }}/"  ><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a> &nbsp;
 
-                <a href="#/{{Request::path()}}/{{ $ps_group->id }}/delete/"  ><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a> &nbsp;
+                <a href="#/{{Request::path()}}/delete/{{ $ps_group->id }}/"  ><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a> &nbsp;
 
                 {{ $ps_group->updated_at }} </div>
 

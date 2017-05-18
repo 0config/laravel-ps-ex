@@ -36,65 +36,45 @@ Route::get('/ps_admin/users',
 );
 
 
-
 //  ps_group route STARTS ------------------------------------
 Route::get('/ps_group', function () {
     $ps_groups = App\Ps_group::orderBy('id', 'desc')->paginate(env('PAGINATION_SM'));// change your number here
     $ps_groups = $ps_groups->appends(Input::except('page'));
     return view('ps_group/ps_group_list', compact('ps_groups'));
-});
+})->name('ps_group.list');
 
 // make sure this comes before detail page
-Route::get('/ps_group/create', 'Ps_groupsController@autoIns');
+Route::get('/ps_group/create', 'Ps_groupsController@autoIns')->name('ps_group.create');
 
 // for detail page
-Route::get('/ps_group/{id}', function ($id) {
+Route::get('/ps_group/detail/{id}', function ($id) {
     $ps_group = App\Ps_group::find($id);
     return view('ps_group/ps_group_detail', compact('ps_group'));
-});
+})->name('ps_group.detail');
 
-Route::get('/ps_group/{id}/edit', function ($id) { // for edit GET
+Route::get('/ps_group/edit/{id}', function ($id) { // for edit GET
     $ps_group = App\Ps_group::find($id);
     if (count($ps_group) < 1) { // later refine this and do the same for update..
         echo 'record not found ';
         exit;
     }
     return view('ps_group/ps_group_edit', compact('ps_group'));
-});
+})->name('ps_group.edit');
 
-Route::post('/ps_group/{id}/edit', 'Ps_groupsController@edit'); // for edit POST
+Route::post('/ps_group/edit/{id}/', 'Ps_groupsController@edit')->name('ps_group.edit_post'); // for edit POST
 
 
 //  ps_group route ENDS ------------------------------------
 
 //  ps_acl route STARTS ------------------------------------
 
-
-Route::get('/ps_acl', function () {
-    $ps_acls = App\Ps_acl::orderBy('id', 'desc')->paginate(3);// change your number here
-    $ps_acls = $ps_acls->appends(Input::except('page'));
-    return view('ps_acl/ps_acl_list', compact('ps_acls'));
-});
-
+Route::get('/ps_acl', 'Ps_aclsController@master_list')->name('ps_acl.master_list');
 // make sure this comes before detail page
-Route::get('/ps_acl/create', 'Ps_aclsController@autoIns');
+Route::get('/ps_acl/create', 'Ps_aclsController@autoIns')->name('ps_acl.create');
 
-// for detail page
-Route::get('/ps_acl/{id}', function ($id) {
-    $ps_acl = App\Ps_acl::find($id);
-    return view('ps_acl/ps_acl_detail', compact('ps_acl'));
-});
-
-Route::get('/ps_acl/{id}/edit', function ($id) { // for edit GET
-    $ps_acl = App\Ps_acl::find($id);
-    if (count($ps_acl) < 1) { // later refine this and do the same for update..
-        echo 'record not found ';
-        exit;
-    }
-    return view('ps_acl/ps_acl_edit', compact('ps_acl'));
-});
-
-Route::post('/ps_acl/{id}/edit', 'Ps_aclsController@edit'); // for edit POST
+Route::get('/ps_acl/detail/{id}', 'Ps_aclsController@detail')->name('ps_acl.detail');
+Route::get('/ps_acl/edit/{id}', 'Ps_aclsController@edit')->name('ps_acl.edit');
+Route::post('/ps_acl/edit/{id}', 'Ps_aclsController@edit_post')->name('ps_acl.edit_post'); // for edit POST
 
 
 //  ps_acl route ENDS ------------------------------------

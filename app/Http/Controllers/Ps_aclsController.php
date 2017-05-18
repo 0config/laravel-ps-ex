@@ -15,7 +15,7 @@ class Ps_aclsController extends Controller
         return redirect()->route('ps_acl.edit', ['id' => $ins->id ]); // you redirect logic here..
     }
 
-    public function master_list() // for edit get
+    public function master_list() 
     {
         $ps_acls = Ps_acl::orderBy('id', 'desc')->paginate(3);// change your number here
         $ps_acls = $ps_acls->appends(Input::except('page'));

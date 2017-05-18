@@ -1,7 +1,7 @@
 @extends('PS_base.PS_base')
 @section('content')
     ps_acls   list..
-    <a href="{{ route('ps_group.create') }}" class="   "> create new record <span class="glyphicon glyphicon-file"
+    <a href="{{ route('ps_acl.create') }}" class="   "> create new record <span class="glyphicon glyphicon-file"
                                                                                   aria-hidden="true"></span></a> &nbsp;
 
     <br>
@@ -25,9 +25,9 @@
 
 
                 {{--route('profile', ['id' => 1])--}}
-                <a href="{{ route('ps_group.edit', ['id' => $ps_acl->id ]) }}" class=""><span class="glyphicon glyphicon-pencil"
+                <a href="{{ route('ps_acl.edit', ['id' => $ps_acl->id ]) }}" class=""><span class="glyphicon glyphicon-pencil"
                                                                                       aria-hidden="true"></span></a>
-                &nbsp; <a href="{{ route('ps_group.detail', ['id' => $ps_acl->id ]) }}"><span class="glyphicon glyphicon-list"
+                &nbsp; <a href="{{ route('ps_acl.detail', ['id' => $ps_acl->id ]) }}"><span class="glyphicon glyphicon-list"
                                                                                       aria-hidden="true"></span></a>
                 &nbsp; <a href="#/{{Request::path()}}/delete/{{ $ps_acl->id }}/"><span
                             class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a> &nbsp;

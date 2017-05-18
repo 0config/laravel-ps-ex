@@ -52,7 +52,7 @@
         {!! Form::label('Select User', '') !!} :
         <div class="form-group has-feedback ">
             {{--{!! Form::number('uid', $uid, [  'class'=>'form-control ' , 'data-error'=>''  , 'required'=>'required',  'data-minlength'=>'1'  ]  ) !!}--}}
-            {!!   Form::select('uid', \App\User::pluck('email', 'id') , '', [  'class' => 'form-control ', 'required' =>'required']   )    !!}
+            {!!   Form::select('uid', \App\User::pluck('email', 'id') , $uid, [  'class' => 'form-control ', 'required' =>'required']   )    !!}
             <div class="clearfix help-block with-errors"></div>
             <span class="glyphicon form-control-feedback"></span>
         </div><br>
@@ -60,7 +60,7 @@
         {!! Form::label('Group ID', '') !!} :
         <div class="form-group has-feedback ">
 {{--            {!! Form::number('gid', $gid, [  'class'=>'form-control ' , 'data-error'=>''  , 'required'=>'required',  'data-minlength'=>'1'  ]  ) !!}--}}
-            {!!   Form::select('gid', \App\Ps_group::pluck('name', 'id') , '', [  'class' => 'form-control ', 'required' =>'required']   )    !!}
+            {!!   Form::select('gid', \App\Ps_group::pluck('name', 'id') , $gid , [  'class' => 'form-control ', 'required' =>'required']   )    !!}
             <div class="clearfix help-block with-errors"></div>
             <span class="glyphicon form-control-feedback"></span>
         </div><br>

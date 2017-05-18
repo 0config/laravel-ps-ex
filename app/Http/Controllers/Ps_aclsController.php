@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
+use Illuminate\Http\Exceptions;
+
 use App\Ps_acl;
 
 class Ps_aclsController extends Controller
@@ -12,10 +14,10 @@ class Ps_aclsController extends Controller
     public function autoIns(Ps_acl $ps_acl)
     {
         $ins = Ps_acl::create(['name' => '']);
-        return redirect()->route('ps_acl.edit', ['id' => $ins->id ]); // you redirect logic here..
+        return redirect()->route('ps_acl.edit', ['id' => $ins->id]); // you redirect logic here..
     }
 
-    public function master_list() 
+    public function master_list()
     {
         $ps_acls = Ps_acl::orderBy('id', 'desc')->paginate(3);// change your number here
         $ps_acls = $ps_acls->appends(Input::except('page'));
@@ -47,15 +49,25 @@ class Ps_aclsController extends Controller
         ]);
 
 // TODO if record does not exist exit here..
-        $ps_acl_update = Ps_acl::find($id);
-// dynamic generation
-        $ps_acl_update->name = request('name');
-        $ps_acl_update->uid = request('uid');
-        $ps_acl_update->gid = request('gid');
-        $ps_acl_update->comments = request('comments');
-        $ps_acl_update->del_stat = request('del_stat');
 
-        $ps_acl_update->save();
+
+        try {
+            $ps_acl_update = Ps_acl::find($id);
+// dynamic generation
+            $ps_acl_update->name = request('name');
+            $ps_acl_update->uid = request('uid');
+            $ps_acl_update->gid = request('gid');
+            $ps_acl_update->comments = request('comments');
+            $ps_acl_update->del_stat = request('del_stat');
+            $ps_acl_update->save();
+        } catch (\Exception $e) {
+            echo $e->getCode();   // err code
+            //echo $e->getMessage();   // err message
+            var_dump($e); // full err array
+            exit;
+        }
+
+
         session()->flash('message', ' Thank you. Document updated ');
         session()->flash('type', 'success'); // OPTIONS bs-class : info|success|danger|warning
         return redirect()->route('ps_acl.master_list'); // change your location here.. note a slash scape is required here

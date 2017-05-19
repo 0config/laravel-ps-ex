@@ -26,12 +26,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// below this is for user admin
 
-Route::get('/ps_admin/users',
-    ['middleware' => 'ps_admin', function () {
-        $users = \App\User::orderBy('id', 'desc')->paginate(env('PAGINATION_XS'));// change your number here
-        echo Request::path(); // integration pending...
-        return view('ps_admin/users', compact('users'));
-    }]
-);

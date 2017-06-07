@@ -21,15 +21,11 @@ class ThreadsTest extends PsTestCase
         $response->assertStatus(200);
     }
 
-    public function testBasicTest_2()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
 
     public function test_ps_test()
     {
+
+        /*
 //        $response = $this->get('/');
 //        $response->assertStatus(200);
 //
@@ -44,13 +40,15 @@ class ThreadsTest extends PsTestCase
 
 //        $this->assert_ps_isEmail('no@email.com', 'from message: invalid message');
 //        $this->assert_ps_isNotEmail('email mail.com');
+        */
+
+
 
         $this->assert_ps_type('pe@mail.com', 5, 'e');
         $this->assert_ps_type('http://www.yahoo.com', 5, 'u');
         $this->assert_ps_type(2, 0, 'f');
         $this->assert_ps_type(31, 0, 'i');
         $this->assert_ps_type('your text here ', 10, 'd');
-
     }
 
 

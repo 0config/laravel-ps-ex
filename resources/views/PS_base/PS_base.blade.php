@@ -21,6 +21,10 @@
     @if(Session::has('message'))
         <p class="alert  alert-{{ Session::get('type') }} text-center">{{ Session::get('message') }}</p>
     @endif
+    
+    @if(isset($_GET['error']))
+            <p class="alert  alert-danger text-center"><?php echo $_GET['error'] ;  ?></p>
+    @endif
 
     <div class="col-lg-12 col-md-12  ">
         <div id="content">

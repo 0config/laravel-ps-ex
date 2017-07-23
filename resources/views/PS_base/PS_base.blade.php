@@ -22,9 +22,16 @@
         <p class="alert  alert-{{ Session::get('type') }} text-center">{{ Session::get('message') }}</p>
     @endif
     
+
     @if(isset($_GET['error']))
-            <p class="alert  alert-danger text-center"><?php echo $_GET['error'] ;  ?></p>
+        <div class="alert  alert-danger text-center"><BR><BR>
+            <h1><span class="glyphicon glyphicon-exclamation-sign"></span> <?php echo $_GET['error'];  ?></h1>
+            <BR><BR>This event has been logged.
+        </div>
+
     @endif
+
+
 
     <div class="col-lg-12 col-md-12  ">
         <div id="content">

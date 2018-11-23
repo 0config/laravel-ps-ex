@@ -60,12 +60,8 @@
 $(document).ready( function () {
     $('.js_table').DataTable( 
         {
-            "bPaginate": false,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false,
-            "language": { "search": "Filter" }
+           "lengthChange" : false, "pageLength": 10 ,  
+           "language"     : { "search": "Filter" } 
         } 
      );
 } );
